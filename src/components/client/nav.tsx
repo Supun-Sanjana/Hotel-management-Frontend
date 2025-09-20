@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const ClientNav = () => {
     return (
 
-        <nav className="bg-teal-500 shadow-md fixed w-full z-50 flex justify-between">
+        <nav className="bg-white/30 shadow-md fixed w-full z-50 flex justify-between">
             <div className=" px-4 py-3 flex items-center font-bold text-white text-2xl">
                 <h3>LuxeSphere</h3>
             </div>
