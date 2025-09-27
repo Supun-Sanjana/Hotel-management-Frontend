@@ -19,6 +19,10 @@ const ClientNav = () => {
                 </div>
 
                 <div className="p-3 w-30 justify-center flex text-white my-2 rounded-2xl">
+                    <Link to={'/gallery'}>Gallery</Link>
+                </div>
+
+                <div className="p-3 w-30 justify-center flex text-white my-2 rounded-2xl">
                     <Link to={'/about-us'}>About Us</Link>
                 </div>
 

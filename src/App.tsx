@@ -7,6 +7,7 @@ import Category from "./pages/admin/Category"
 import User from "./pages/admin/User"
 import Feedback from "./pages/admin/Feedback"
 import Gallery from "./pages/admin/Gallery"
+import Login from "./pages/login/login"
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
               <Route path="gallery" element={<Gallery/>} />
           </Route>
 
+          <Route path="/login" element={<Login/>} />
 
 
         </Routes>

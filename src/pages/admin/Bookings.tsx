@@ -20,6 +20,7 @@ const Bookings = () => {
 
           <tbody className="divide-y divide-gray-200">
             <tr className="hover:bg-teal-50 transition-colors">
+              
               <td className="px-6 py-4">BKG001</td>
               <td className="px-6 py-4">RM101</td>
               <td className="px-6 py-4">guest@example.com</td>

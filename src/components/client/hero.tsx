@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Hero = () => {
     return (
         <div className="relative w-full h-[900px] flex flex-col items-center justify-center">
@@ -51,7 +49,7 @@ const Hero = () => {
 
 
                     </div>
-                    <button className='bg-teal-800 text-white px-10 py-3 rounded-lg my-4' >Search</button>
+                    <button className='bg-orange-900 text-white px-10 py-3 rounded-lg my-4' >Book Now</button>
 
                 </div>
 
