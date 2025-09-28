@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import UserTag from "../UserData/userTag";
 
 const ClientNav = () => {
     return (
@@ -31,6 +32,8 @@ const ClientNav = () => {
                 </div>
 
             </div>
+
+            <UserTag />
 
             <div className="flex justify-between items-center gap-5 mr-5">
                 <div className="p-3 w-30 justify-center flex text-white my-2 rounded-2xl">

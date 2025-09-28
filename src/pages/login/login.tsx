@@ -1,11 +1,32 @@
 import { useState } from "react";
+import axios from "axios"
+
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = () => {
-        console.log(email, password);
+
+        axios.post(import.meta.env.VITE_BACKEND_URL + '/api/v1/login', { email: email, password: password })
+            .then((response) => {
+                console.log(response);
+                //save token in browser
+                localStorage.setItem('token', response.data.token);
+                //get token from browser
+                const token = localStorage.getItem('token');
+                localStorage.setItem("user", JSON.stringify(response.data.user));
+
+                console.log(token);
+
+                // if (response.data.user.type === "admin") {
+                //     window.location.href = "/admin";
+                // }else if(response.data.user.type === "user") {
+                //     window.location.href = "/";
+                // }
+            }).catch(() => {
+                console.log("Login failed");
+            })
 
     };
 
@@ -23,7 +44,7 @@ const Login = () => {
 
                 <input type="email" placeholder="Email Address"
                     className="w-full placeholder:text-gray-500 bg-white/30 p-3 rounded-md mt-6  focus:outline focus:outline-white"
-                    defaultValue={email}
+                    value={email}
                     onChange={
                         (event) => setEmail(event.target.value)
                     }
@@ -31,7 +52,7 @@ const Login = () => {
 
                 <input type="password" placeholder="Password "
                     className="w-full placeholder:text-gray-500 bg-white/30 p-3 rounded-md mt-6  focus:outline focus:outline-white"
-                    defaultValue={password}
+                    value={password}
                     onChange={
                         (event) => setPassword(event.target.value)
                     }
