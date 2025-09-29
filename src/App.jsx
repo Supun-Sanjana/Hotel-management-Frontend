@@ -8,6 +8,9 @@ import User from "./pages/admin/User"
 import Feedback from "./pages/admin/Feedback"
 import Gallery from "./pages/admin/Gallery"
 import Login from "./pages/login/login"
+import Test from "./pages/test/Test"
+import UploadImage from "./pages/client/Upload"
+import DiplayImage from "./pages/client/DiplayImage"
 
 function App() {
 
@@ -29,6 +32,9 @@ function App() {
           </Route>
 
           <Route path="/login" element={<Login/>} />
+          <Route path="test" element={<Test/>}/>
+          <Route path="upload" element={<UploadImage/>}/>
+          <Route path="gallery" element={<DiplayImage/>}/>
 
 
         </Routes>
