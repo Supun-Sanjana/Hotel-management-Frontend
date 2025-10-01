@@ -11,12 +11,15 @@ import Login from "./pages/login/login"
 import Test from "./pages/test/Test"
 import UploadImage from "./pages/client/Upload"
 import DiplayImage from "./pages/client/DiplayImage"
+import { Toaster } from "react-hot-toast"
+import AddCategoryForm from "./pages/admin/AddCategory/AddCategoryForm"
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
+      <Toaster position="top-right" />
         <Routes >
           {/* Client pages */}
           <Route path="/" element={<ClientPage />} />
@@ -29,6 +32,7 @@ function App() {
               <Route path="users" element={<User/>} />
               <Route path="feedback" element={<Feedback/>} />
               <Route path="gallery" element={<Gallery/>} />
+              <Route path="add-category" element={<AddCategoryForm/>}/>
           </Route>
 
           <Route path="/login" element={<Login/>} />

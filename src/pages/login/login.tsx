@@ -19,11 +19,11 @@ const Login = () => {
 
                 console.log(token);
 
-                // if (response.data.user.type === "admin") {
-                //     window.location.href = "/admin";
-                // }else if(response.data.user.type === "user") {
-                //     window.location.href = "/";
-                // }
+                if (response.data.user.type === "admin") {
+                    window.location.href = "/admin";
+                }else if(response.data.user.type === "user") {
+                    window.location.href = "/";
+                }
             }).catch(() => {
                 console.log("Login failed");
             })
