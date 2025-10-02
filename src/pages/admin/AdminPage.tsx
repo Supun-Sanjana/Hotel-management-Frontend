@@ -43,7 +43,7 @@ const Admin = () => {
 
         {/* Main Content */}
 
-        <div className='w-[80%] bg-gray-50 overflow-y-scroll p-3 scrollbar-hide'>
+        <div className='w-[80%] h-[100vh]  bg-gray-50 overflow-y-scroll p-3 scrollbar-hide'>
           <Outlet />
         </div>
       </div>

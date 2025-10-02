@@ -54,7 +54,7 @@ const Category = () => {
 
   return (
     <>
-      <div className="w-full p-6 min-h-screen">
+      <div className="w-full p-6 min-h-screen ">
         <button
           className="cursor-pointer fixed bottom-6 right-6 p-2 rounded-full text-white text-5xl w-12 h-12 flex items-center justify-center bg-teal-600 "
           onClick={() => setShowModal(true)}
@@ -69,7 +69,7 @@ const Category = () => {
           Categories
         </h2>
 
-        <div className="overflow-x-auto rounded-2xl shadow-md">
+        <div className="overflow-x-auto rounded-2xl shadow-md overflow-scroll">
           <table className="min-w-full border-collapse bg-white text-left text-sm text-gray-700">
             <thead className="bg-teal-600 text-white">
               <tr>
