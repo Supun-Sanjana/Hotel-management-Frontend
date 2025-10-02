@@ -33,7 +33,7 @@ const Category = () => {
 
   const deleteItem = (name) => {
     axios
-      .delete(import.meta.env.VITE_BACKEND_URL + "/api/v1/category/" + name, {
+      .delete(import.meta.env.VITE_BACKEND_URL + "/api/v1/category/"+name, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -69,7 +69,7 @@ const Category = () => {
           Categories
         </h2>
 
-        <div className="overflow-x-auto rounded-2xl shadow-md overflow-scroll">
+        <div className="overflow-x-auto scrollbar-hide rounded-2xl shadow-md overflow-scroll">
           <table className="min-w-full border-collapse bg-white text-left text-sm text-gray-700">
             <thead className="bg-teal-600 text-white">
               <tr>
