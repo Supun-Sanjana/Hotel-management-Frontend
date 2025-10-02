@@ -4,14 +4,14 @@ import UserTag from "../UserData/userTag";
 const ClientNav = () => {
     return (
 
-        <nav className="bg-white/30 shadow-md fixed w-full z-50 flex justify-between">
+        <nav className="bg-orange-100/40 shadow-md fixed w-full z-50 flex justify-between">
             <div className=" px-4 py-3 flex items-center font-bold text-white text-2xl">
                 <h3>LuxeSphere</h3>
             </div>
             <div className="flex justify-between items-center gap-5 mr-5">
 
 
-                <div className="p-3 w-30 justify-center flex  my-2 rounded-2xl text-white">
+                <div className="p-3 w-30 justify-center flex  my-2 rounded-2xl text-teal-100">
                     <Link to={'/rooms'}>Rooms</Link>
                 </div>
 
