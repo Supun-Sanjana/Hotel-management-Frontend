@@ -13,6 +13,7 @@ import DiplayImage from "./utils/DiplayImage"
 import { Toaster } from "react-hot-toast"
 import UpdateCategory from "./pages/admin/UpdateCategory/UpdateCategory"
 import Gallery from "./pages/admin/Gallery"
+import UpdateGallery from "./pages/admin/UpdateGallery/updateGallery"
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
               <Route path="users" element={<User/>} />
               <Route path="feedback" element={<Feedback/>} />
               <Route path="gallery" element={<Gallery/>} />
+              <Route path="gallery/update-gallery" element={<UpdateGallery/>} />
               <Route path="categories/update-category" element={<UpdateCategory/>} />
           </Route>
 
