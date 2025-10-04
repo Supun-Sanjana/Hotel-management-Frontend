@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Plus } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import CategoryModal from "./AddCategory/addModel";
-import UpdateModel from "./AddCategory/updateModel";
+import { Link } from "react-router-dom";
 
 const Category = () => {
   const [categories, setCategories] = useState([]);
@@ -12,7 +11,6 @@ const Category = () => {
 
   const [showModal, setShowModal] = useState(false);
 
-  const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
 
@@ -48,9 +46,6 @@ const Category = () => {
       });
   };
 
-  // const handleAdd = () => {
-  //   setShowModal(true)
-  // };
 
   return (
     <>
@@ -86,6 +81,9 @@ const Category = () => {
                   Description
                 </th>
                 <th className="px-6 py-3 font-medium uppercase tracking-wider">
+                  Image
+                </th>
+                <th className="px-6 py-3 font-medium uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
@@ -110,14 +108,20 @@ const Category = () => {
                   </td>
                   <td className="px-6 py-4 text-gray-600">{cat.description}</td>
 
+                  <td>
+                    <img key={cat._id} src={cat.image} alt={cat.name} width="50" />
+
+                  </td>
+
                   <td className="px-6 py-4 flex gap-2">
 
-                    <button
+                    <Link to={`update-category`}
+                    state={cat}
                       className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded transition"
-                      onClick={() => {}} // ✅ fixed
+
                     >
                       Edit
-                    </button>
+                    </Link>
 
 
                     <button

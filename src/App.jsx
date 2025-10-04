@@ -12,7 +12,7 @@ import Test from "./pages/test/Test"
 import UploadImage from "./utils/Upload"
 import DiplayImage from "./utils/DiplayImage"
 import { Toaster } from "react-hot-toast"
-import AddCategoryForm from "./pages/admin/AddCategory/AddCategoryForm"
+import UpdateCategory from "./pages/admin/UpdateCategory/UpdateCategory"
 
 function App() {
 
@@ -32,7 +32,7 @@ function App() {
               <Route path="users" element={<User/>} />
               <Route path="feedback" element={<Feedback/>} />
               <Route path="gallery" element={<Gallery/>} />
-              <Route path="add-category" element={<AddCategoryForm/>}/>
+              <Route path="categories/update-category" element={<UpdateCategory/>} />
           </Route>
 
           <Route path="/login" element={<Login/>} />
