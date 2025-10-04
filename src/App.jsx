@@ -6,13 +6,13 @@ import Rooms from "./pages/admin/Rooms"
 import Category from "./pages/admin/Category"
 import User from "./pages/admin/User"
 import Feedback from "./pages/admin/Feedback"
-import Gallery from "./pages/admin/Gallery"
 import Login from "./pages/login/login"
 import Test from "./pages/test/Test"
 import UploadImage from "./utils/Upload"
 import DiplayImage from "./utils/DiplayImage"
 import { Toaster } from "react-hot-toast"
 import UpdateCategory from "./pages/admin/UpdateCategory/UpdateCategory"
+import Gallery from "./pages/admin/Gallery"
 
 function App() {
 
