@@ -44,7 +44,7 @@ const GalleryModal = ({ showModal, setShowModal }) => {
       setLoad(false);
     }
   };
-ff
+
   return (
     <div
       className="fixed inset-0 flex items-center justify-center bg-black/50 z-50"
