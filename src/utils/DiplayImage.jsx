@@ -5,7 +5,7 @@ function DiplayImage() {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:4000/upload")
+    axios.get("https://hotel-management-backend-production-053e.up.railway.app/upload")
       .then(res => setImages(res.data))
       .catch(err => console.error(err));
   }, []);
