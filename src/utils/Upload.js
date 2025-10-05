@@ -7,7 +7,7 @@ async function UploadImage(file) {
   const formData = new FormData();
   formData.append("image", file); // 👈 must match multer field name in backend
 
-  const res = await axios.post("http://localhost:4000/upload", formData, {
+  const res = await axios.post("https://hotel-management-backend-production-053e.up.railway.app/upload", formData, {
     headers: { "Content-Type": "multipart/form-data" },
   });
 
