@@ -60,7 +60,7 @@ const Gallery = () => {
         Gallery
       </h2>
 
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-5 gap-6">
         {gallery.map((item) => (
           <div
             key={item._id}
