@@ -1,23 +1,27 @@
 import axios from "axios";
+import { Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const User = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
+    getAllUsers();
+  }, []);
+
+  const getAllUsers = () => {
     axios
       .get(import.meta.env.VITE_BACKEND_URL + "/api/v1/get-all")
       .then((res) => {
-        setUsers(res.data.list); 
+        setUsers(res.data.list);
       })
       .catch((err) => console.error("Error fetching users:", err));
-  }, []);
+  };
 
   const handleToggle = async (id) => {
     setUsers((prev) =>
-      prev.map((u) =>
-        u._id === id ? { ...u, disabled: !u.disabled } : u
-      )
+      prev.map((u) => (u._id === id ? { ...u, disabled: !u.disabled } : u))
     );
 
     try {
@@ -29,6 +33,18 @@ const User = () => {
     }
   };
 
+  const deleteUser = async (id) => {
+    try {
+      await axios.delete(
+        import.meta.env.VITE_BACKEND_URL + `/api/v1/delete-user/${id}`
+      );
+      toast.success("User deleted successfully");
+      getAllUsers();
+    } catch (err) {
+      toast.error("Failed to delete user");
+    }
+  };
+
   return (
     <div className="w-full p-6">
       <h2 className="text-2xl font-semibold text-teal-800 mb-4">Users</h2>
@@ -37,14 +53,33 @@ const User = () => {
         <table className="min-w-full border-collapse bg-white text-left text-sm text-gray-700">
           <thead className="bg-teal-600 text-white">
             <tr>
-              <th className="px-6 py-3 font-medium uppercase tracking-wider">First Name</th>
-              <th className="px-6 py-3 font-medium uppercase tracking-wider">Username</th>
-              <th className="px-6 py-3 font-medium uppercase tracking-wider">Email</th>
-              <th className="px-6 py-3 font-medium uppercase tracking-wider">Type</th>
-              <th className="px-6 py-3 font-medium uppercase tracking-wider">WhatsApp</th>
-              <th className="px-6 py-3 font-medium uppercase tracking-wider">Phone</th>
-              <th className="px-6 py-3 font-medium uppercase tracking-wider">Email Verified</th>
-              <th className="px-6 py-3 font-medium uppercase tracking-wider">Disabled</th>
+              <th className="px-6 py-3 font-medium uppercase tracking-wider">
+                First Name
+              </th>
+              <th className="px-6 py-3 font-medium uppercase tracking-wider">
+                Username
+              </th>
+              <th className="px-6 py-3 font-medium uppercase tracking-wider">
+                Email
+              </th>
+              <th className="px-6 py-3 font-medium uppercase tracking-wider">
+                Type
+              </th>
+              <th className="px-6 py-3 font-medium uppercase tracking-wider">
+                WhatsApp
+              </th>
+              <th className="px-6 py-3 font-medium uppercase tracking-wider">
+                Phone
+              </th>
+              <th className="px-6 py-3 font-medium uppercase tracking-wider">
+                Email Verified
+              </th>
+              <th className="px-6 py-3 font-medium uppercase tracking-wider">
+                Disabled
+              </th>
+              <th className="px-6 py-3 font-medium uppercase tracking-wider">
+                Action
+              </th>
             </tr>
           </thead>
 
@@ -80,6 +115,11 @@ const User = () => {
                         user.disabled ? "translate-x-5" : "translate-x-1"
                       }`}
                     />
+                  </button>
+                </td>
+                <td className="flex justify-center items-center  py-5">
+                  <button onClick={() => deleteUser(user._id)}>
+                    <Trash2 className="w-[20px] h-[20px]  text-red-500 cursor-pointer" />
                   </button>
                 </td>
               </tr>
