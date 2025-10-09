@@ -50,7 +50,7 @@ const Register = () => {
         email: formData.email,
         password: formData.password,
         type: formData.type,
-        image: imageUrl, // ✅
+        image: imageUrl, 
       });
 
       setSuccess("Registration successful!");
