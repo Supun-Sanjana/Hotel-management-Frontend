@@ -1,4 +1,19 @@
+import axios from "axios"
+import { useState } from "react"
+
 const Hero = () => {
+
+    const [formData, setFormData] = useState({
+        checking: "",
+        checkout: "",
+        category: ""
+    })
+
+    const createBooking =async ()=>{
+        axios.post(import.meta.env.VITE_BACKEND_URL + "/api/v1/booking", formData)
+    }
+
+
     return (
         <div className="relative w-full h-[900px] flex flex-col items-center justify-center">
             {/* Background Image */}
@@ -18,11 +33,12 @@ const Hero = () => {
                 </h2>
 
                 <div className='bg-white/30 p-4 rounded-2xl flex-col justify-center items-center flex '>
-                     {/* Input Fields */}
+                    {/* Input Fields */}
                     <div className="flex flex-wrap gap-4 justify-center">
                         <div className='flex flex-col bg-white/60 p-2 rounded-md'>
                             <label className='pb-2 pl-2 '>Checkin date</label>
                             <input
+                                onChange={(e) => setFormData({ ...formData, checking: e.target.value })}
                                 type="date"
                                 placeholder="First Field"
                                 className="px-4 py-3 rounded-lg w-64 bg-white/90 focus:outline-none focus:ring-2 focus:ring-teal-400"
@@ -32,6 +48,7 @@ const Hero = () => {
                         <div className='flex flex-col bg-white/60 p-2 rounded-md'>
                             <label className='pb-2 pl-2 '>Checkout date</label>
                             <input
+                                onChange={(e) => setFormData({ ...formData, checkout: e.target.value })}
                                 type="date"
                                 placeholder="First Field"
                                 className="px-4 py-3 rounded-lg w-64 bg-white/90 focus:outline-none focus:ring-2 focus:ring-teal-400"
@@ -40,16 +57,24 @@ const Hero = () => {
 
                         <div className='flex flex-col bg-white/60 p-2 rounded-md'>
                             <label className='pb-2 pl-2 '>Category</label>
-                            <select name="" id="" className="px-4 py-3 rounded-lg w-64 bg-white/90 focus:outline-none focus:ring-2 focus:ring-teal-400" >
-                                <option value="">Standard</option>
-                                <option value="">Luxery</option>
-                                <option value="">Deluxe</option>
+                            <select
+                                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                                value={formData.category || ""}
+                                name="" id="" className="px-4 py-3 rounded-lg w-64 bg-white/90 focus:outline-none focus:ring-2 focus:ring-teal-400" >
+                                <option value="" disabled>Select</option>
+                                <option value="Standard">Standard</option>
+                                <option value="Luxery">Luxery</option>
+                                <option value="Deluxe">Deluxe</option>
                             </select>
                         </div>
 
 
                     </div>
-                    <button className='bg-orange-900 text-white px-10 py-3 rounded-lg my-4' >Book Now</button>
+                    <button
+                        onClick={() => console.log(formData)}
+                        className='bg-orange-900 text-white px-10 py-3 rounded-lg my-4' >
+                        Book Now
+                    </button>
 
                 </div>
 

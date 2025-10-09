@@ -1,0 +1,7 @@
+reg--->email verify page
+room update function
+feedback display
+check booking rooms
+---> select checking/out date and category ---> search room
+--->create booking
+--->redirect to user's booking view page
