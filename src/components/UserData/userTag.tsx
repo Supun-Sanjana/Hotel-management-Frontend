@@ -6,14 +6,12 @@ const UserTag = () => {
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-    // 1. Load user from localStorage
     const savedUser = localStorage.getItem("user");
     if (savedUser) {
       const parsedUser = JSON.parse(savedUser);
       setName(parsedUser.userName);
     }
 
-    // 2. If token exists, fetch fresh user data
     if (token) {
       axios
         .get(import.meta.env.VITE_BACKEND_URL + "/api/v1/", {
@@ -30,19 +28,20 @@ const UserTag = () => {
         })
         .catch((err) => console.log(err));
     } else {
-      setName(""); // ✅ clear state if no token
+      setName("");
     }
-  }, [token]); // reruns when token changes       json variable isn't work
+  }, [token]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("user"); // ✅ clear user too
-    setName(""); // ✅ clear state
+    localStorage.removeItem("user");
+    setName("");
+    window.location.reload();
   };
 
   return (
-    <div>
-      <h1>hi {name}</h1>
+    <div className='text-white'>
+      <h1>{name}</h1>
       {token && (
         <button onClick={handleLogout}>logout</button>
       )}

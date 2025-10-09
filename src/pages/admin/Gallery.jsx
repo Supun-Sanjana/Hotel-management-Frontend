@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Plus } from "lucide-react";
@@ -56,9 +56,7 @@ const Gallery = () => {
       {/* Modal */}
       <GalleryModal showModal={showModal} setShowModal={setShowModal} />
 
-      <h2 className="text-2xl font-semibold text-teal-800 mb-4">
-        Gallery
-      </h2>
+      <h2 className="text-2xl font-semibold text-teal-800 mb-4">Gallery</h2>
 
       <div className="grid grid-cols-5 gap-6">
         {gallery.map((item) => (
@@ -66,7 +64,11 @@ const Gallery = () => {
             key={item._id}
             className="bg-white shadow-md rounded-xl overflow-hidden"
           >
-            <img src={item.imageUrl} alt={item.name} className="w-full h-40 object-cover" />
+            <img
+              src={item.imageUrl}
+              alt={item.name}
+              className="w-full h-40 object-cover"
+            />
             <div className="p-4">
               <h3 className="text-lg font-semibold">{item.name}</h3>
               <p className="text-sm text-gray-600">{item.description}</p>

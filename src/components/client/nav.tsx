@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import UserTag from "../UserData/userTag";
 
 const ClientNav = () => {
+    const token = localStorage.getItem('token');
+
+
     return (
 
         <nav className="bg-orange-100/40 shadow-md fixed w-full z-50 flex justify-between">
@@ -33,13 +36,18 @@ const ClientNav = () => {
 
             </div>
 
-            <UserTag />
 
             <div className="flex justify-between items-center gap-5 mr-5">
-                <div className="p-3 w-30 justify-center flex text-white my-2 rounded-2xl">
-                    <Link to={'/sign-up'}>Sign Up</Link>
-                </div>
+                {token ? <UserTag /> :
+                    <div className="p-3 w-30 justify-center flex text-white my-2 rounded-2xl">
+                        <Link to={'/login'}>Login</Link>
+                    </div>
+                }
             </div>
+
+
+
+
 
 
         </nav>
