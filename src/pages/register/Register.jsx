@@ -50,12 +50,12 @@ const Register = () => {
         email: formData.email,
         password: formData.password,
         type: formData.type,
-        image: imageUrl, 
+        image: imageUrl,
       });
 
       setSuccess("Registration successful!");
 
-      window.location.href = "/login";
+      window.location.href = "/verify-email";
     } catch (err) {
       console.error(err);
       setError("Something went wrong!");

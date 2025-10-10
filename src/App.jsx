@@ -14,6 +14,7 @@ import UpdateCategory from "./pages/admin/UpdateCategory/UpdateCategory"
 import Gallery from "./pages/admin/Gallery"
 import UpdateGallery from "./pages/admin/UpdateGallery/updateGallery"
 import Register from "./pages/register/Register"
+import OTP from "./components/client/email-verify"
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Routes >
           {/* Client pages */}
           <Route path="/" element={<ClientPage />} />
+          <Route path="/verify-email" element={<OTP/>} />
 
           {/* Admin pages */}
           <Route path="/admin" element={<Admin />} >
