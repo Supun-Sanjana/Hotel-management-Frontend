@@ -1,4 +1,3 @@
-import axios from "axios"
 import { useState } from "react"
 
 const Hero = () => {
@@ -9,9 +8,7 @@ const Hero = () => {
         category: ""
     })
 
-    const createBooking =async ()=>{
-        axios.post(import.meta.env.VITE_BACKEND_URL + "/api/v1/booking", formData)
-    }
+    
 
 
     return (
