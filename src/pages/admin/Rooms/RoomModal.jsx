@@ -5,19 +5,16 @@ import UploadImage from "../../../utils/Upload";
 
 const RoomModal = ({ showModal, setShowModal, refreshRooms }) => {
   if (!showModal) return null;
-  const [category, setCategory] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    
     axios
       .get(import.meta.env.VITE_BACKEND_URL + "/api/v1/category/")
       .then((res) => {
-        setCategory(res.data);
-        console.log(res.data);
+        setCategories(res.data.categories);
+        console.log(res.data.categories);
       });
-
-    
-  },[]);
+  }, []);
 
   const [formData, setFormData] = useState({
     category: "",
@@ -114,14 +111,20 @@ const RoomModal = ({ showModal, setShowModal, refreshRooms }) => {
       >
         <h2 className="text-xl font-semibold mb-4">Add Room</h2>
 
-        <input
-          type="text"
-          placeholder="Category *"
+        <select
           name="category"
           value={formData.category}
           onChange={handleChange}
           className="w-full p-2 border rounded mb-3"
-        />
+        >
+          <option value="">Select Category</option>
+          {categories.map((cat) => (
+            <option key={cat._id} value={cat.name}>
+              {cat.name}
+            </option>
+          ))}
+        </select>
+
         <label htmlFor="">Max Guests</label>
         <input
           type="number"
