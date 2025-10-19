@@ -15,6 +15,7 @@ import Gallery from "./pages/admin/Gallery"
 import UpdateGallery from "./pages/admin/UpdateGallery/updateGallery"
 import Register from "./pages/register/Register"
 import OTP from "./components/client/email-verify"
+import UpdateRoom from "./pages/admin/UpdateRoom/UpdateRoom"
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
           <Route path="/admin" element={<Admin />} >
               <Route path="bookings" element={<Bookings/>} />
               <Route path="rooms" element={<Rooms/>} />
+              <Route path="rooms/update-rooms" element={<UpdateRoom/>} />
               <Route path="categories" element={<Category/>} />
               <Route path="users" element={<User/>} />
               <Route path="feedback" element={<Feedback/>} />

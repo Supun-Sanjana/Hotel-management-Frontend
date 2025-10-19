@@ -3,6 +3,7 @@ import { Edit, Plus, Trash2 } from "lucide-react";
 import RoomModal from "./RoomModal";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const Rooms = () => {
   const [showModal, setShowModal] = useState(false);
@@ -58,7 +59,7 @@ const Rooms = () => {
       <RoomModal showModal={showModal} setShowModal={setShowModal} />
 
       {/* Room cards */}
-      <div className="grid grid-cols-3 gap-6 mt-6">
+      <div className="grid grid-cols-4 gap-6 mt-6">
   {rooms.map((room) => (
     <div
       key={room._id}
@@ -73,12 +74,12 @@ const Rooms = () => {
 
       {/* Action icons */}
       <div className="absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-        <button
+        <Link to={"update-rooms"}state={room}
           className="bg-white p-1 rounded-full shadow hover:bg-gray-100"
-          onClick={() => handleEdit(room)}
+          
         >
           <Edit size={16} className="text-teal-600" />
-        </button>
+        </Link>
         <button
           className="bg-white p-1 rounded-full shadow hover:bg-gray-100"
           onClick={() => handleDelete(room.roomId)}
