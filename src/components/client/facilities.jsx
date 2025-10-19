@@ -31,7 +31,7 @@ const Facilities = () => {
       <h2 className="text-3xl font-bold text-gray-700 text-center mb-8">
         Hotel Facilities
       </h2>
-      <div className="mx-20 lg:mx-70">
+      <div className="mx-5 lg:mx-70">
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {facilities.map((facility, index) => (
           <div

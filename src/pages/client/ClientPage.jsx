@@ -4,6 +4,7 @@ import Hero from '../../components/client/hero.tsx'
 import Rooms from '../../components/client/rooms.jsx'
 import Facilities from '../../components/client/facilities.jsx'
 import Footer from '../../components/client/footer.jsx'
+import Gallery from '../../components/client/gallery.jsx'
 
 const ClientPage = () => {
   return (
@@ -12,6 +13,7 @@ const ClientPage = () => {
       <Hero/>
       <Rooms/>
       <Facilities/>
+      <Gallery/>
       <Footer/>
     </div>
   )

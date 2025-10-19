@@ -25,7 +25,7 @@ const Rooms = () => {
         space, and Luxury for the ultimate indulgence.
       </h3>
 
-      <div className="mx-20 lg:mx-70">
+      <div className="mx-5 lg:mx-70">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 mb-10">
           {rooms.map((room, index) => (
             <div
@@ -46,7 +46,7 @@ const Rooms = () => {
                   {room.features.map((feature, idx) => (
                     <span
                       key={idx}
-                      className="bg-orange-200 text-orange-700 px-2 py-1 rounded-full text-sm"
+                      className="bg-orange-200 text-orange-500 px-2 py-1 rounded-full text-sm"
                     >
                       {feature}
                     </span>
