@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Admin from "./pages/admin/AdminPage"
-import ClientPage from "./pages/client/ClientPage"
 import Bookings from "./pages/admin/Booking/Bookings"
 import Rooms from "./pages/admin/Rooms/Rooms"
 import Category from "./pages/admin/Category"
@@ -16,6 +15,7 @@ import UpdateGallery from "./pages/admin/UpdateGallery/updateGallery"
 import Register from "./pages/register/Register"
 import OTP from "./components/client/email-verify"
 import UpdateRoom from "./pages/admin/UpdateRoom/UpdateRoom"
+import ClientPage from "./pages/client/ClientPage"
 
 function App() {
 
