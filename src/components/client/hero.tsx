@@ -25,7 +25,7 @@ const Hero = () => {
 
             {/* Text and Inputs */}
             <div className="relative z-10 flex flex-col items-center gap-8">
-                <h2 className="text-white text-5xl font-bold text-center drop-shadow-lg">
+                <h2 className="text-white text-5xl font-bold text-center drop-shadow-lg  mt-50  sm:mt-0">
                     Welcome to LuxeSphere
                 </h2>
 
