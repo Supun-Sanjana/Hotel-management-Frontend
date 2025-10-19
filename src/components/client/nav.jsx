@@ -19,28 +19,28 @@ const ClientNav = ({ onScrollTo }) => {
         <h3 className="font-bold text-white text-2xl">LuxeSphere</h3>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-5">
+        <div className="hidden md:flex items-center gap-15">
           <button
             onClick={() => handleNavClick("rooms")}
-            className="text-white hover:text-orange-300 transition"
+            className="text-white hover:text-orange-300 transition cursor-pointer"
           >
             Rooms
           </button>
           <button
             onClick={() => handleNavClick("facilities")}
-            className="text-white hover:text-orange-300 transition"
+            className="text-white hover:text-orange-300 transition cursor-pointer"
           >
             Facilities
           </button>
           <button
             onClick={() => handleNavClick("gallery")}
-            className="text-white hover:text-orange-300 transition"
+            className="text-white hover:text-orange-300 transition cursor-pointer"
           >
             Gallery
           </button>
           <button
             onClick={() => handleNavClick("footer")}
-            className="text-white hover:text-orange-300 transition"
+            className="text-white hover:text-orange-300 transition cursor-pointer"
           >
             Contact
           </button>

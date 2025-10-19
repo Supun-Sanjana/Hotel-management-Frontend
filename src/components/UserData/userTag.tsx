@@ -43,12 +43,12 @@ const UserTag = () => {
   return (
     <div className="flex items-center gap-3 bg-gray-800/40 px-4 py-2 rounded-xl text-white shadow-md hover:bg-gray-700 transition-all duration-300">
       <span className="font-medium text-sm tracking-wide">
-        👋 Hi, <span className="font-semibold text-blue-400">{name}</span>
+        👋 Hi, <span className="font-semibold text-orange-400">{name}</span>
       </span>
       {token && (
         <button
           onClick={handleLogout}
-          className="flex items-center gap-1 text-sm bg-red-600/50 hover:bg-red-700 px-3 py-1 rounded-lg transition-all duration-300"
+          className="cursor-pointer flex items-center gap-1 text-sm bg-red-600/50 hover:bg-red-700 px-3 py-1 rounded-lg transition-all duration-300"
         >
           <LogOut size={16} />
           Logout

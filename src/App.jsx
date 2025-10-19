@@ -16,6 +16,7 @@ import Register from "./pages/register/Register"
 import OTP from "./components/client/email-verify"
 import UpdateRoom from "./pages/admin/UpdateRoom/UpdateRoom"
 import ClientPage from "./pages/client/ClientPage"
+import Booking from "./components/client/booking"
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         <Routes >
           {/* Client pages */}
           <Route path="/" element={<ClientPage />} />
+          <Route path="/booking" element={<Booking />} />
           <Route path="/verify-email" element={<OTP/>} />
 
           {/* Admin pages */}

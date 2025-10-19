@@ -23,12 +23,12 @@
 
 
 import { useRef } from "react";
-import Hero from "../../components/client/hero";
 import Rooms from "../../components/client/rooms";
 import Facilities from "../../components/client/facilities";
 import Gallery from "../../components/client/gallery";
 import Footer from "../../components/client/footer";
 import ClientNav from "../../components/client/nav";
+import Hero from "../../components/client/hero";
 
 const ClientPage = () => {
   const heroRef = useRef(null);
