@@ -66,7 +66,7 @@ const Rooms = () => {
     >
       {/* Room image */}
       <img
-        src={room.image[0] || "https://via.placeholder.com/300"}
+        src={room.image[0] || null}
         alt={room.category}
         className="w-full h-40 object-cover"
       />
@@ -90,6 +90,7 @@ const Rooms = () => {
       {/* Room info */}
       <div className="p-4">
         <h3 className="text-lg font-semibold">{room.category}</h3>
+        <h3 className="text-md font-semibold">{room.roomId}</h3>
         <p className="text-sm text-gray-600">Price: ${room.price}</p>
         <p className="text-sm text-gray-600">Max Guests: {room.maxGuests}</p>
         <p className="text-sm text-gray-600">

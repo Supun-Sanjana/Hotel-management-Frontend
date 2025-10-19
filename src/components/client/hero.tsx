@@ -12,7 +12,7 @@ const Hero = () => {
 
 
     return (
-        <div className="relative w-full h-[900px] flex flex-col items-center justify-center">
+        <div className="relative w-full h-[650px] flex flex-col items-center justify-center">
             {/* Background Image */}
             <img
                 src="hero_gpt.png"

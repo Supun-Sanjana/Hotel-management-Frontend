@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import UploadImage from "../../../utils/Upload";
 
-
 const RoomModal = ({ showModal, setShowModal, refreshRooms }) => {
   if (!showModal) return null;
+  const [category, setCategory] = useState([]);
+
+  useEffect(() => {
+    
+    axios
+      .get(import.meta.env.VITE_BACKEND_URL + "/api/v1/category/")
+      .then((res) => {
+        setCategory(res.data);
+        console.log(res.data);
+      });
+
+    
+  },[]);
 
   const [formData, setFormData] = useState({
     category: "",
@@ -110,7 +122,7 @@ const RoomModal = ({ showModal, setShowModal, refreshRooms }) => {
           onChange={handleChange}
           className="w-full p-2 border rounded mb-3"
         />
-
+        <label htmlFor="">Max Guests</label>
         <input
           type="number"
           placeholder="Max Guests"
