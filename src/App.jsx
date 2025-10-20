@@ -17,6 +17,7 @@ import OTP from "./components/client/email-verify"
 import UpdateRoom from "./pages/admin/UpdateRoom/UpdateRoom"
 import ClientPage from "./pages/client/ClientPage"
 import Booking from "./components/client/booking"
+import Profile from "./components/client/profile"
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           {/* Client pages */}
           <Route path="/" element={<ClientPage />} />
           <Route path="/booking" element={<Booking />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/verify-email" element={<OTP/>} />
 
           {/* Admin pages */}

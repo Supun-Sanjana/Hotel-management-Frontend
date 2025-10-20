@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useLocation } from "react-router-dom";
+import CustomNav from "./custom-nav";
 
 const Booking = () => {
   const location = useLocation();
@@ -101,6 +102,7 @@ const Booking = () => {
 
   return (
     <>
+    <CustomNav/>
       <div className="relative z-10 flex flex-col items-center gap-8 bg-orange-900/80 p-20">
         <h2 className="text-white text-4xl font-bold text-center drop-shadow-lg">
           Booking
