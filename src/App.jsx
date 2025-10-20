@@ -22,6 +22,7 @@ import Profile from "./pages/client/Profile";
 import BookingHistory from "./pages/client/BookingHistory";
 import Payments from "./pages/client/Payments";
 import HelpCenter from "./pages/client/HelpCenter";
+import ClientFeedback from "./pages/client/Feedback";
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
             <Route path="bookings/history" element={<BookingHistory />} />
             <Route path="payments" element={<Payments/>} />
             <Route path="help" element={<HelpCenter />} />
-            <Route path="feedback" element={<Feedback />} />
+            <Route path="feedback" element={<ClientFeedback />} />
           </Route>
 
           {/* Admin pages */}
