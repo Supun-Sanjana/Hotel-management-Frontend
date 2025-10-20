@@ -94,7 +94,7 @@ const Booking = () => {
       start: formData.checking,
       end: formData.checkout,
     }).then(
-        ()=>{
+        (res)=>{
             toast.success("Booking Created successfully")
         }
     );
