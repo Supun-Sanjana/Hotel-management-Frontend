@@ -6,6 +6,18 @@ import { useLocation } from "react-router-dom";
 const Booking = () => {
   const location = useLocation();
   const { checking = "", checkout = "", category = "" } = location.state || {};
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+
+    if (user.email) {
+      console.log("User email:", user.email);
+      setEmail(user.email);
+    } else {
+      console.log("No user found or email missing");
+    }
+  }, []); //empty  dependency array -> runs only once
 
   const [formData, setFormData] = useState({
     checking,
@@ -14,35 +26,50 @@ const Booking = () => {
     rooms: [],
   });
 
+  //check booking dates
+  useEffect(() => {
+    axios.post(
+      import.meta.env.VITE_BACKEND_URL + "/api/v1/booking/filter-date",
+      {
+        start: formData.checking,
+        end: formData.checkout,
+      }
+    );
+  }, [checking, checkout]);
+
   // ✅ Fetch rooms when page loads (based on category from Home)
   useEffect(() => {
-    if (category) {
-      fetchRooms(category);
+    if (checking && checkout && category) {
+      fetchAvailableRooms({ checking, checkout, category });
     }
-  }, [category]);
+  }, [checking, checkout, category]);
 
   // ✅ Fetch rooms when user selects a new category from dropdown
   useEffect(() => {
     if (formData.category && formData.category !== category) {
-      fetchRooms(formData.category);
+      fetchAvailableRooms(formData);
     }
   }, [formData.category]);
 
-  const fetchRooms = (selectedCategory) => {
+  const fetchAvailableRooms = (data) => {
     axios
-      .get(
-        `${
-          import.meta.env.VITE_BACKEND_URL
-        }/api/v1/room/byCategory/${selectedCategory}`
+      .post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/booking/filter-available`,
+        {
+          start: data.checking,
+          end: data.checkout,
+          category: data.category,
+        }
       )
       .then((res) => {
         setFormData((prev) => ({
           ...prev,
-          rooms: res.data.rooms,
+          rooms: res.data.rooms || [],
         }));
       })
-      .catch(() => {
-        toast.error("Failed to load rooms!");
+      .catch((err) => {
+        toast.error("Failed to load available rooms!");
+        console.error(err);
       });
   };
 
@@ -51,7 +78,25 @@ const Booking = () => {
       toast.error("Please select all fields!");
       return;
     }
-    fetchRooms(data.category);
+    fetchAvailableRooms(data);
+  };
+
+  const handelBooking = (room) => {
+    console.log(room.roomId);
+    console.log(formData.checking);
+    console.log(formData.checkout);
+    console.log(email);
+
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/booking/`, {
+      roomId: room.roomId,
+      email: email,
+      start: formData.checking,
+      end: formData.checkout,
+    }).then(
+        ()=>{
+            toast.success("Booking Created successfully")
+        }
+    );
   };
 
   return (
@@ -121,7 +166,7 @@ const Booking = () => {
 
       {/* Room Display Section */}
       <div className="flex-1 my-10 mx-5 lg:mx-70">
-        <p className="text-xl ml-10">
+        <p className="text-xl font-semibold text-gray-700">
           Category : {formData.category || "Not selected"}
         </p>
 
@@ -139,7 +184,9 @@ const Booking = () => {
                     className="w-full h-40 object-cover rounded-md mb-3"
                   />
                   <h3 className="text-lg font-bold">{room.category}</h3>
-                  <p className="text-gray-600 text-sm">Room Number : {room.roomId}</p>
+                  <p className="text-gray-600 text-sm">
+                    Room Number : {room.roomId}
+                  </p>
                   <p className="mb-3 text-gray-600 text-sm">
                     Max Guest : {room.maxGuests}
                   </p>
@@ -152,7 +199,12 @@ const Booking = () => {
                       Price: ${room.price}/night
                     </p>
 
-                    <button className="px-6 py-2 hover:bg-orange-300 duration-400 cursor-pointer bg-orange-200 rounded-full">Book</button>
+                    <button
+                      onClick={() => handelBooking(room)}
+                      className="px-6 py-2 hover:bg-orange-300 duration-400 cursor-pointer bg-orange-200 rounded-full"
+                    >
+                      Book
+                    </button>
                   </div>
                 </div>
               </div>
