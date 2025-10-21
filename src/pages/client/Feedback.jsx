@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 
@@ -9,13 +9,20 @@ const ClientFeedback = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    const loggedInemail = JSON.parse(localStorage.getItem("user")).email;
+    setEmail(loggedInemail);
+  }, []);
+
+  console.log(email);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
       await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/feedback`, {
-        name,
+        userName:name,
         email,
         rating,
         message,
@@ -23,7 +30,7 @@ const ClientFeedback = () => {
 
       toast.success("Feedback submitted successfully!");
       setName("");
-      setEmail("");
+      
       setRating(5);
       setMessage("");
     } catch (err) {
@@ -60,8 +67,8 @@ const ClientFeedback = () => {
           <input
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Your Email (optional)"
+            disabled
+            placeholder={email}
             className="w-full mt-1 border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
           />
         </div>

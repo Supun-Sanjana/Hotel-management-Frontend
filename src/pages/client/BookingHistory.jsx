@@ -8,7 +8,9 @@ const BookingHistory = () => {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/booking/byEmail/${email}`)
+      .get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/booking/byEmail/${email}`
+      )
       .then((res) => {
         setBookings(res.data.bookings || []);
       })
@@ -17,9 +19,7 @@ const BookingHistory = () => {
 
   if (bookings.length === 0) {
     return (
-      <div className="text-center mt-10 text-gray-500">
-        No bookings found.
-      </div>
+      <div className="text-center mt-10 text-gray-500">No bookings found.</div>
     );
   }
 
@@ -52,9 +52,7 @@ const BookingHistory = () => {
           <div className="grid grid-cols-2 gap-4 text-sm text-gray-600">
             <div className="flex items-center gap-1">
               <CalendarCheck2 size={16} className="text-orange-500" />
-              <span>
-                Start: {new Date(booking.start).toLocaleDateString()}
-              </span>
+              <span>Start: {new Date(booking.start).toLocaleDateString()}</span>
             </div>
             <div className="flex items-center gap-1">
               <CalendarCheck2 size={16} className="text-red-500" />
@@ -64,12 +62,27 @@ const BookingHistory = () => {
               <span className="font-medium">Note:</span> {booking.note || "-"}
             </div>
             <div>
-              <span className="font-medium">Reason:</span> {booking.reson || "-"}
+              <span className="font-medium">Reason:</span>{" "}
+              {booking.reson || "-"}
             </div>
+
             <div>
               <span className="font-medium">Booked on:</span>{" "}
               {new Date(booking.timeStamp).toLocaleString()}
             </div>
+          </div>
+          <div className="flex justify-end mt-4">
+            <button
+              className={`px-6 py-2 rounded-full font-medium shadow-sm active:scale-95 transition-all duration-200
+      ${
+        booking.status === "pending"
+          ? "bg-red-500 text-white hover:bg-red-600 hover:shadow-md cursor-pointer"
+          : "bg-gray-300 text-gray-500 cursor-not-allowed"
+      }`}
+              disabled={booking.status !== "pending"}
+            >
+              Delete
+            </button>
           </div>
         </div>
       ))}
