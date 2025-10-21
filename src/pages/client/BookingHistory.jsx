@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { CalendarCheck2 } from "lucide-react"; // optional icon for date
+import toast from "react-hot-toast";
 
 const BookingHistory = () => {
   const [bookings, setBookings] = useState([]);
   const email = JSON.parse(localStorage.getItem("user")).email;
 
-  useEffect(() => {
+  const getBooking = () => {
     axios
       .get(
         `${import.meta.env.VITE_BACKEND_URL}/api/v1/booking/byEmail/${email}`
@@ -15,6 +16,10 @@ const BookingHistory = () => {
         setBookings(res.data.bookings || []);
       })
       .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    getBooking();
   }, [email]);
 
   if (bookings.length === 0) {
@@ -22,6 +27,17 @@ const BookingHistory = () => {
       <div className="text-center mt-10 text-gray-500">No bookings found.</div>
     );
   }
+
+  const handelDelete = (bId) => {
+    axios
+      .delete(`${import.meta.env.VITE_BACKEND_URL}/api/v1/booking/${bId}`)
+      .then((res) => {
+        setBookings(res.data.bookings || []);
+        toast.success("Booking deleted successfully");
+        getBooking();
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
     <div className="max-w-4xl mx-auto mt-10 p-4 space-y-6">
@@ -73,6 +89,7 @@ const BookingHistory = () => {
           </div>
           <div className="flex justify-end mt-4">
             <button
+              onClick={() => handelDelete(booking.bookingId)}
               className={`px-6 py-2 rounded-full font-medium shadow-sm active:scale-95 transition-all duration-200
       ${
         booking.status === "pending"

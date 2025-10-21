@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 const Feedback = () => {
   const [feedbacks, setFeedbacks] = useState([]);
 
-  useEffect(() => {
+  const fetchFeedbacks = async () => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/feedback`)
       .then((res) => {
@@ -13,7 +13,19 @@ const Feedback = () => {
       .catch((err) => {
         console.error("Failed to fetch feedback:", err);
       });
+  };
+
+  useEffect(() => {
+    fetchFeedbacks();
   }, []);
+
+  const handelDelete = async (id) => {
+    await axios.delete(
+      `${import.meta.env.VITE_BACKEND_URL}/api/v1/feedback/delete/${id}`
+    );
+    fetchFeedbacks();
+    toast.success("Feedback deleted successfully");
+  };
 
   return (
     <div className="p-6">
@@ -48,10 +60,7 @@ const Feedback = () => {
 
           <tbody className="divide-y divide-gray-200">
             {feedbacks.map((fb) => (
-              <tr
-                key={fb._id}
-                className="hover:bg-teal-50 transition-colors"
-              >
+              <tr key={fb._id} className="hover:bg-teal-50 transition-colors">
                 <td className="px-6 py-4 font-medium text-gray-800">
                   {fb.userName}
                 </td>
@@ -64,7 +73,7 @@ const Feedback = () => {
                 <td className="px-6 py-4">
                   <button
                     className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded transition"
-                    onClick={() => console.log("delete", fb._id)}
+                    onClick={() => handelDelete(fb._id)}
                   >
                     Delete
                   </button>
@@ -74,10 +83,7 @@ const Feedback = () => {
 
             {feedbacks.length === 0 && (
               <tr>
-                <td
-                  colSpan="6"
-                  className="text-center py-6 text-gray-500"
-                >
+                <td colSpan="6" className="text-center py-6 text-gray-500">
                   No feedbacks found.
                 </td>
               </tr>
