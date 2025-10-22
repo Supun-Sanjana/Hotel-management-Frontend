@@ -49,7 +49,7 @@ const Profile = () => {
     setLoading(false);
 
     toast.success("User updated successfully");
-    console.log(res.data.user);
+    // console.log(res.data.user);
     localStorage.setItem("user", JSON.stringify(res.data.user));
     setShowModal(false);
   } catch (err) {

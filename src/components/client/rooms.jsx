@@ -9,7 +9,7 @@ const Rooms = () => {
       .get(import.meta.env.VITE_BACKEND_URL + "/api/v1/category/")
       .then((res) => {
         setRooms(res.data.categories);
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => console.error(err));
   }, []);

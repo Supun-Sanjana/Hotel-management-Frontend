@@ -13,7 +13,7 @@ const Booking = () => {
     const user = JSON.parse(localStorage.getItem("user") || "{}");
 
     if (user.email) {
-      console.log("User email:", user.email);
+     
       setEmail(user.email);
     } else {
       console.log("No user found or email missing");
@@ -83,10 +83,7 @@ const Booking = () => {
   };
 
   const handelBooking = (room) => {
-    console.log(room.roomId);
-    console.log(formData.checking);
-    console.log(formData.checkout);
-    console.log(email);
+   
 
     axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/booking/`, {
       roomId: room.roomId,

@@ -26,7 +26,7 @@ const Bookings = () => {
       );
       toast.success(`Status updated to ${newStatus}`);
       getAllBooking(); // refresh after update
-      console.log(bookingId);
+      // console.log(bookingId);
 
     } catch (err) {
       toast.error("Failed to update status");
@@ -107,7 +107,7 @@ const Bookings = () => {
                     onClick={() => console.log("Edit", booking.bookingId)}
                     className="px-2 py-1 rounded bg-gray-300 text-gray-800 text-xs"
                   >
-                    Edit
+                    Delete
                   </button>
                 </td>
               </tr>

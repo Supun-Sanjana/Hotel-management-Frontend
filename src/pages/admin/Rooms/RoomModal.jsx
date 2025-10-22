@@ -12,7 +12,7 @@ const RoomModal = ({ showModal, setShowModal, refreshRooms }) => {
       .get(import.meta.env.VITE_BACKEND_URL + "/api/v1/category/")
       .then((res) => {
         setCategories(res.data.categories);
-        console.log(res.data.categories);
+        // console.log(res.data.categories);
       });
   }, []);
 

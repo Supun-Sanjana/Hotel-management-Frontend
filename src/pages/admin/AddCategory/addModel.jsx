@@ -29,7 +29,7 @@ const CategoryModal = ({ showModal, setShowModal }) => {
     try {
       const uploadedUrl = await UploadImage(image); // 👈 call util
       setUrl(uploadedUrl);
-      console.log("Uploaded URL:", uploadedUrl);
+      // console.log("Uploaded URL:", uploadedUrl);
       const categoryInfo = {
         name: name,
         price: price,
@@ -37,7 +37,7 @@ const CategoryModal = ({ showModal, setShowModal }) => {
         description: description,
         image: uploadedUrl,
       };
-      console.log(categoryInfo);
+      // console.log(categoryInfo);
 
       axios
         .post(
@@ -50,7 +50,7 @@ const CategoryModal = ({ showModal, setShowModal }) => {
           }
         )
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           setload(false);
         });
     } catch (error) {
