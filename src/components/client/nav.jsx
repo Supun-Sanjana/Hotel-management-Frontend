@@ -13,47 +13,35 @@ const ClientNav = ({ onScrollTo }) => {
   };
 
   return (
-    <nav className="bg-orange-900/80 backdrop-blur-md shadow-md fixed w-full z-50">
-      <div className="max-w-7xl mx-auto px-5 flex justify-between items-center py-3">
+    <nav className="glass fixed w-full z-50 transition-all duration-300">
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center py-4">
         {/* Brand */}
-        <h3 className="font-bold text-white text-2xl">LuxeSphere</h3>
+        <h3 className="font-display font-bold text-primary text-2xl tracking-tight">
+          Luxe<span className="text-secondary">Sphere</span>
+        </h3>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-15">
-          <button
-            onClick={() => handleNavClick("rooms")}
-            className="text-white hover:text-orange-300 transition cursor-pointer"
-          >
-            Rooms
-          </button>
-          <button
-            onClick={() => handleNavClick("facilities")}
-            className="text-white hover:text-orange-300 transition cursor-pointer"
-          >
-            Facilities
-          </button>
-          <button
-            onClick={() => handleNavClick("gallery")}
-            className="text-white hover:text-orange-300 transition cursor-pointer"
-          >
-            Gallery
-          </button>
-          <button
-            onClick={() => handleNavClick("footer")}
-            className="text-white hover:text-orange-300 transition cursor-pointer"
-          >
-            Contact
-          </button>
+        <div className="hidden md:flex items-center gap-10">
+          {["Rooms", "Facilities", "Gallery", "Contact"].map((item) => (
+            <button
+              key={item}
+              onClick={() => handleNavClick(item.toLowerCase() === "contact" ? "footer" : item.toLowerCase())}
+              className="text-primary/80 font-medium hover:text-secondary transition-colors duration-300 cursor-pointer relative group"
+            >
+              {item}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+            </button>
+          ))}
         </div>
 
         {/* Right Section (User / Login) */}
-        <div className="hidden md:flex items-center gap-5">
+        <div className="hidden md:flex items-center gap-6">
           {token ? (
             <UserTag />
           ) : (
             <Link
               to="/login"
-              className="px-5 py-2 bg-orange-600 text-white rounded-xl shadow-md hover:bg-orange-700 transition-all duration-300"
+              className="px-6 py-2.5 bg-primary text-white font-medium rounded-lg shadow-lg hover:bg-primary/90 hover:-translate-y-0.5 transition-all duration-300"
             >
               Login
             </Link>
@@ -63,35 +51,42 @@ const ClientNav = ({ onScrollTo }) => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-white focus:outline-none"
+          className="md:hidden text-primary focus:outline-none transition-transform duration-300 active:scale-90"
         >
-          {isOpen ? <X size={26} /> : <Menu size={26} />}
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden flex flex-col bg-orange-900/95 text-white px-6 py-4 space-y-3 animate-slideDown">
-          <button onClick={() => handleNavClick("rooms")}>Rooms</button>
-          <button onClick={() => handleNavClick("facilities")}>Facilities</button>
-          <button onClick={() => handleNavClick("gallery")}>Gallery</button>
-          <button onClick={() => handleNavClick("footer")}>Contact</button>
+      <div 
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        } bg-white border-t border-gray-100 flex flex-col px-6 py-6 space-y-4 shadow-xl`}
+      >
+        {["Rooms", "Facilities", "Gallery", "Contact"].map((item) => (
+          <button 
+            key={item}
+            onClick={() => handleNavClick(item.toLowerCase() === "contact" ? "footer" : item.toLowerCase())}
+            className="text-primary font-medium text-lg text-left hover:text-secondary transition-colors"
+          >
+            {item}
+          </button>
+        ))}
 
+        <div className="pt-4 border-t border-gray-100">
           {token ? (
-            <div className="mt-3">
-              <UserTag />
-            </div>
+            <UserTag />
           ) : (
             <Link
               to="/login"
-              className="block w-full text-center px-5 py-2 bg-orange-600 rounded-xl shadow-md hover:bg-orange-700 transition-all"
+              className="block w-full text-center px-6 py-3 bg-primary text-white font-medium rounded-lg shadow-lg hover:bg-primary/90 transition-all"
               onClick={() => setIsOpen(false)}
             >
               Login
             </Link>
           )}
         </div>
-      )}
+      </div>
     </nav>
   );
 };

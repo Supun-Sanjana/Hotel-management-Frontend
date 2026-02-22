@@ -27,25 +27,35 @@ const facilities = [
 
 const Facilities = () => {
   return (
-    <div className="mt-10 px-5">
-      <h2 className="text-3xl font-bold text-gray-700 text-center mb-8">
-        Hotel Facilities
-      </h2>
-      <div className="mx-5 lg:mx-70">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        {facilities.map((facility, index) => (
-          <div
-            key={index}
-            className="flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-lg transition-shadow duration-300"
-          >
-            <div className="text-orange-600 mb-2">{facility.icon}</div>
-            <p className="text-orange-700 text-sm text-center">{facility.name}</p>
-          </div>
-        ))}
+    <section id="facilities" className="py-24 px-6 bg-white">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16 space-y-4 animate-slideDown">
+          <h2 className="text-primary text-4xl md:text-5xl font-display font-bold tracking-tight">
+            World-Class <span className="text-secondary">Amenities</span>
+          </h2>
+          <p className="text-gray-500 max-w-xl mx-auto text-lg font-light">
+            We offer a wide range of facilities to ensure your stay is as comfortable and luxurious as possible.
+          </p>
+          <div className="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+          {facilities.map((facility, index) => (
+            <div
+              key={index}
+              className="group flex flex-col items-center p-8 bg-slate-50 rounded-2xl border border-gray-100 transition-all duration-300 hover:bg-primary hover:scale-[1.05] hover:shadow-xl group"
+            >
+              <div className="text-secondary mb-4 p-3 bg-white rounded-xl shadow-sm group-hover:bg-secondary group-hover:text-primary transition-colors duration-300">
+                {facility.icon}
+              </div>
+              <p className="text-primary font-bold text-sm text-center uppercase tracking-widest group-hover:text-white transition-colors">
+                {facility.name}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
-      </div>
-      
-    </div>
+    </section>
   );
 };
 

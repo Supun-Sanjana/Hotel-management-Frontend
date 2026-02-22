@@ -52,26 +52,30 @@ const UserTag = () => {
     <div className="relative inline-block text-white">
       <div
         onClick={() => setShowMenu(!showMenu)}
-        className="flex items-center gap-2 bg-gray-800/40 px-4 py-2 rounded-xl shadow-md hover:bg-gray-700 cursor-pointer transition-all duration-300"
+        className="flex items-center gap-3 bg-white/10 hover:bg-white/20 px-4 py-2 border border-white/20 rounded-lg cursor-pointer transition-all duration-300 group"
       >
-        <span className="font-medium text-sm tracking-wide">
-          👋 Hi, <span className="font-semibold text-orange-400">{name}</span>
+        <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-primary font-bold">
+          {name.charAt(0).toUpperCase()}
+        </div>
+        <span className="font-medium text-sm text-primary group-hover:text-secondary transition-colors">
+          {name}
         </span>
       </div>
 
       {showMenu && (
-        <div className="absolute right-0 mt-2 w-40 bg-gray-800 border border-gray-700 rounded-lg shadow-lg z-50">
+        <div className="absolute right-0 mt-3 w-48 bg-white border border-gray-100 rounded-xl shadow-2xl z-50 py-2 overflow-hidden animate-slideDown">
           <button
             onClick={handleProfile}
-            className="flex w-full items-center gap-2 px-4 py-2 text-sm hover:bg-gray-700 transition-all"
+            className="flex w-full items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-all"
           >
-            <User size={16} /> Profile
+            <User size={18} className="text-secondary" /> Profile
           </button>
+          <div className="h-px bg-gray-100 my-1 mx-2"></div>
           <button
             onClick={handleLogout}
-            className="flex w-full items-center gap-2 px-4 py-2 text-sm hover:bg-red-600/60 transition-all"
+            className="flex w-full items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-all"
           >
-            <LogOut size={16} /> Logout
+            <LogOut size={18} /> Logout
           </button>
         </div>
       )}
