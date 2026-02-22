@@ -74,9 +74,9 @@ const Hero = () => {
       {/* Background Image with Zoom Effect */}
       <div className="absolute inset-0 z-0">
         <img
-          src="vibrant-hero.png"
-          alt="Luxury Hotel"
-          className="w-full h-full object-cover"
+          src="banner-hero.png"
+          alt="Luxury Resort Aerial"
+          className="w-full h-full object-cover brightness-[0.85]"
           style={{ animation: 'zoom-pan 30s infinite alternate linear' }}
         />
         {/* Vibrant Gradient Overlay */}
@@ -85,12 +85,12 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center gap-12 px-6 max-w-5xl text-center">
-        <div className="space-y-6 animate-fadeInUp">
-          <h1 className="text-white text-6xl md:text-8xl font-display font-extrabold tracking-tight drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
+      <div className="relative z-10 flex flex-col items-center gap-8 md:gap-12 px-6 max-w-5xl text-center pt-20 md:pt-0">
+        <div className="space-y-4 md:space-y-6 animate-fadeInUp">
+          <h1 className="text-white text-4xl sm:text-5xl md:text-8xl font-display font-extrabold tracking-tight drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
             Experience <span className="text-secondary bg-clip-text text-transparent bg-gradient-to-r from-secondary to-yellow-400">Absolute</span> Luxury
           </h1>
-          <p className="text-white/90 text-xl md:text-2xl font-light max-w-3xl mx-auto tracking-wide leading-relaxed drop-shadow-md">
+          <p className="text-white/90 text-base md:text-2xl font-light max-w-3xl mx-auto tracking-wide leading-relaxed drop-shadow-md">
             Where Sophistication Meets Serenity. Discover the Ultimate in
             <span className="font-semibold text-secondary"> Coastal Elegance</span> and Refined Comfort.
           </p>
@@ -98,55 +98,55 @@ const Hero = () => {
 
         {/* Booking Bar */}
         <div className="glass-vibrant p-1.5 md:p-2 rounded-3xl w-full shadow-[0_20px_50px_rgba(0,0,0,0.3)] animate-fadeInUp backdrop-blur-xl border border-white/30" style={{ animationDelay: '0.2s' }}>
-          <div className="flex flex-col md:flex-row items-stretch gap-2 bg-black/20 rounded-[1.25rem] p-3">
+          <div className="flex flex-col md:flex-row items-stretch gap-2 bg-black/20 rounded-[1.25rem] p-2 md:p-3">
 
             {/* Check-in */}
-            <div className="flex-1 flex flex-col items-start px-6 py-3 hover:bg-white/10 transition-all duration-300 rounded-xl group cursor-pointer border border-transparent hover:border-white/10">
-              <label className="text-[11px] uppercase tracking-[0.2em] text-secondary font-black mb-1.5 flex items-center gap-2">
+            <div className="flex-1 flex flex-col items-start px-4 md:px-6 py-2 md:py-3 hover:bg-white/10 transition-all duration-300 rounded-xl group cursor-pointer border border-transparent hover:border-white/10">
+              <label className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-secondary font-black mb-1 md:mb-1.5 flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></div>
                 Check-in
               </label>
               <input
                 onChange={(e) => setFormData({ ...formData, checking: e.target.value })}
                 type="date"
-                className="bg-transparent text-white font-medium outline-none w-full cursor-pointer [color-scheme:dark] text-lg"
+                className="bg-transparent text-white font-medium outline-none w-full cursor-pointer [color-scheme:dark] text-sm md:text-lg"
               />
             </div>
 
             <div className="hidden md:block w-px bg-white/20 my-4"></div>
 
             {/* Check-out */}
-            <div className="flex-1 flex flex-col items-start px-6 py-3 hover:bg-white/10 transition-all duration-300 rounded-xl group cursor-pointer border border-transparent hover:border-white/10">
-              <label className="text-[11px] uppercase tracking-[0.2em] text-secondary font-black mb-1.5 flex items-center gap-2">
+            <div className="flex-1 flex flex-col items-start px-4 md:px-6 py-2 md:py-3 hover:bg-white/10 transition-all duration-300 rounded-xl group cursor-pointer border border-transparent hover:border-white/10">
+              <label className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-secondary font-black mb-1 md:mb-1.5 flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></div>
                 Check-out
               </label>
               <input
                 onChange={(e) => setFormData({ ...formData, checkout: e.target.value })}
                 type="date"
-                className="bg-transparent text-white font-medium outline-none w-full cursor-pointer [color-scheme:dark] text-lg"
+                className="bg-transparent text-white font-medium outline-none w-full cursor-pointer [color-scheme:dark] text-sm md:text-lg"
               />
             </div>
 
             <div className="hidden md:block w-px bg-white/20 my-4"></div>
 
-            {/* Category */}
-            <div className="flex-1 flex flex-col items-start px-6 py-3 hover:bg-white/10 transition-all duration-300 rounded-xl group cursor-pointer border border-transparent hover:border-white/10">
-              <label className="text-[11px] uppercase tracking-[0.2em] text-secondary font-black mb-1.5">Room Type</label>
+            {/* Category (Styled Custom Dropdown) */}
+            <div className="flex-1 flex flex-col items-start px-4 md:px-6 py-2 md:py-3 hover:bg-white/10 transition-all duration-300 rounded-xl group cursor-pointer border border-transparent hover:border-white/10 relative">
+              <label className="text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-secondary font-black mb-1 md:mb-1.5">Room Type</label>
               <div className="relative w-full">
                 <select
                   onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                   value={formData.category || ""}
-                  className="bg-transparent text-white font-medium outline-none w-full cursor-pointer appearance-none text-lg py-0"
+                  className="bg-transparent text-white font-medium outline-none w-full cursor-pointer appearance-none text-sm md:text-lg py-0 pr-8 relative z-10"
                 >
-                  <option value="" className="bg-primary text-white">Select Type</option>
-                  <option value="Standard Room" className="bg-primary text-white">Standard Room</option>
-                  <option value="Luxury Room" className="bg-primary text-white">Luxury Room</option>
-                  <option value="Deluxe Room" className="bg-primary text-white">Deluxe Room</option>
+                  <option value="" className="bg-[#0A192F] text-white">Select Type</option>
+                  <option value="Standard Room" className="bg-[#0A192F] text-white">Standard Room</option>
+                  <option value="Luxury Room" className="bg-[#0A192F] text-white">Luxury Room</option>
+                  <option value="Deluxe Room" className="bg-[#0A192F] text-white">Deluxe Room</option>
                 </select>
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-white/50">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-secondary">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
               </div>
@@ -155,7 +155,7 @@ const Hero = () => {
             {/* Submit */}
             <button
               onClick={() => handelSubmit(formData)}
-              className="bg-secondary hover:bg-yellow-500 text-primary font-black px-12 py-5 rounded-2xl transition-all duration-500 transform hover:scale-[1.05] hover:shadow-[0_10px_30px_rgba(197,160,89,0.5)] active:scale-95 text-lg uppercase tracking-wider relative overflow-hidden group/btn"
+              className="bg-secondary hover:bg-yellow-500 text-primary font-black px-8 md:px-12 py-4 md:py-5 rounded-2xl transition-all duration-500 transform hover:scale-[1.05] hover:shadow-[0_10px_30px_rgba(197,160,89,0.5)] active:scale-95 text-base md:text-lg uppercase tracking-wider relative overflow-hidden group/btn mt-2 md:mt-0"
             >
               <span className="relative z-10">Book Now</span>
               <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 skew-x-[-20deg]"></div>

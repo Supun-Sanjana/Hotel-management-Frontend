@@ -6,34 +6,36 @@ const CustomNav = () => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
-  const navigateToHome=()=>{
-    navigate("/")
-  }
-  return (
-    <div>
-      <nav className="bg-orange-900/80 backdrop-blur-md shadow-md fixed w-full z-50">
-        <div className="max-w-7xl mx-auto px-5 flex gap-8 justify-between items-center py-3">
-          {/* Brand */}
-          <h3 
-          onClick={navigateToHome}
-          className="cursor-pointer font-bold text-white text-xl sm:text-2xl">LuxeSphere</h3>
+  const navigateToHome = () => {
+    navigate("/");
+  };
 
-          {/* Right Section (User / Login) */}
-          <div className=" md:flex items-center gap-5">
-            {token ? (
-              <UserTag />
-            ) : (
-              <Link
-                to="/login"
-                className="px-5 py-2 bg-orange-600 text-white rounded-xl shadow-md hover:bg-orange-700 transition-all duration-300"
-              >
-                Login
-              </Link>
-            )}
-          </div>
+  return (
+    <nav className="glass fixed w-full z-50 transition-all duration-300">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center py-3 md:py-4">
+        {/* Brand */}
+        <h3
+          onClick={navigateToHome}
+          className="cursor-pointer font-display font-bold text-primary text-xl md:text-2xl tracking-tight"
+        >
+          Luxe<span className="text-secondary">Sphere</span>
+        </h3>
+
+        {/* Right Section (User / Login) */}
+        <div className="flex items-center gap-4 md:gap-6">
+          {token ? (
+            <UserTag />
+          ) : (
+            <Link
+              to="/login"
+              className="px-5 md:px-6 py-2 md:py-2.5 bg-primary text-white font-medium rounded-lg shadow-lg hover:bg-primary/90 hover:-translate-y-0.5 transition-all duration-300 text-sm md:text-base"
+            >
+              Login
+            </Link>
+          )}
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 };
 

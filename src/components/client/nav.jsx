@@ -14,9 +14,9 @@ const ClientNav = ({ onScrollTo }) => {
 
   return (
     <nav className="glass fixed w-full z-50 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center pt-2">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center py-3 md:py-4">
         {/* Brand */}
-        <h3 className="font-display font-bold text-primary text-2xl tracking-tight">
+        <h3 className="font-display font-bold text-primary text-xl md:text-2xl tracking-tight">
           Luxe<span className="text-secondary">Sphere</span>
         </h3>
 
@@ -51,37 +51,41 @@ const ClientNav = ({ onScrollTo }) => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-primary focus:outline-none transition-transform duration-300 active:scale-90"
+          className="md:hidden text-primary focus:outline-none transition-all duration-300 active:scale-90 p-2 hover:bg-black/5 rounded-lg"
         >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-          } bg-white border-t border-gray-100 flex flex-col px-6 py-2 space-y-2 shadow-xl`}
+        className={`md:hidden absolute top-full left-0 w-full overflow-hidden transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) ${isOpen ? "max-h-[80vh] opacity-100 shadow-2xl" : "max-h-0 opacity-0"
+          } bg-white/95 backdrop-blur-2xl border-t border-gray-100 flex flex-col px-8 py-8 space-y-6`}
       >
-        {["Rooms", "Facilities", "Gallery", "Contact"].map((item) => (
+        {["Rooms", "Facilities", "Gallery", "Contact"].map((item, idx) => (
           <button
             key={item}
             onClick={() => handleNavClick(item.toLowerCase() === "contact" ? "footer" : item.toLowerCase())}
-            className="text-primary font-medium text-lg text-left hover:text-secondary transition-colors"
+            className={`text-primary font-bold text-2xl text-left hover:text-secondary transition-all duration-300 transform ${isOpen ? 'translate-x-0' : '-translate-x-4'}`}
+            style={{ transitionDelay: `${idx * 50}ms` }}
           >
             {item}
           </button>
         ))}
 
-        <div className="pt-4 border-t border-gray-100">
+        <div className="pt-6 border-t border-gray-100 mt-2">
           {token ? (
-            <UserTag />
+            <div className="flex items-center justify-between">
+              <span className="text-gray-400 text-sm font-medium">Logged in as</span>
+              <UserTag />
+            </div>
           ) : (
             <Link
               to="/login"
-              className="block w-full text-center px-6 py-3 bg-primary text-white font-medium rounded-lg shadow-lg hover:bg-primary/90 transition-all"
+              className="block w-full text-center px-6 py-4 bg-primary text-white font-bold text-lg rounded-2xl shadow-xl hover:bg-primary/90 active:scale-[0.98] transition-all"
               onClick={() => setIsOpen(false)}
             >
-              Login
+              Login to Account
             </Link>
           )}
         </div>

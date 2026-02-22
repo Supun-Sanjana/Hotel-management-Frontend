@@ -27,28 +27,28 @@ const facilities = [
 
 const Facilities = () => {
   return (
-    <section id="facilities" className="py-24 px-6 bg-white">
+    <section id="facilities" className="py-16 md:py-24 px-4 md:px-6 bg-white">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16 space-y-4 animate-slideDown">
-          <h2 className="text-primary text-4xl md:text-5xl font-display font-bold tracking-tight">
+        <div className="text-center mb-12 md:mb-16 space-y-3 md:space-y-4 animate-fadeInUp">
+          <h2 className="text-primary text-3xl md:text-5xl font-display font-bold tracking-tight">
             World-Class <span className="text-secondary">Amenities</span>
           </h2>
-          <p className="text-gray-500 max-w-xl mx-auto text-lg font-light">
+          <p className="text-gray-500 max-w-xl mx-auto text-base md:text-lg font-light">
             We offer a wide range of facilities to ensure your stay is as comfortable and luxurious as possible.
           </p>
-          <div className="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
+          <div className="w-16 md:w-24 h-1 bg-secondary mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-8">
           {facilities.map((facility, index) => (
             <div
               key={index}
-              className="group flex flex-col items-center p-8 bg-slate-50 rounded-2xl border border-gray-100 transition-all duration-300 hover:bg-primary hover:scale-[1.05] hover:shadow-xl group"
+              className="group flex flex-col items-center p-6 md:p-8 bg-slate-50 rounded-2xl border border-gray-100 transition-all duration-300 hover:bg-primary hover:scale-[1.05] hover:shadow-xl group cursor-default"
             >
-              <div className="text-secondary mb-4 p-3 bg-white rounded-xl shadow-sm group-hover:bg-secondary group-hover:text-primary transition-colors duration-300">
-                {facility.icon}
+              <div className="text-secondary mb-3 md:mb-4 p-2.5 md:p-3 bg-white rounded-xl shadow-sm group-hover:bg-secondary group-hover:text-primary transition-colors duration-300">
+                {React.cloneElement(facility.icon, { size: window.innerWidth < 768 ? 18 : 20 })}
               </div>
-              <p className="text-primary font-bold text-sm text-center uppercase tracking-widest group-hover:text-white transition-colors">
+              <p className="text-primary font-bold text-[10px] md:text-sm text-center uppercase tracking-widest group-hover:text-white transition-colors">
                 {facility.name}
               </p>
             </div>
