@@ -74,7 +74,7 @@ const Hero = () => {
       {/* Background Image with Zoom Effect */}
       <div className="absolute inset-0 z-0">
         <img
-          src="banner-hero.png"
+          src="banner-hero.jpg"
           alt="Luxury Resort Aerial"
           className="w-full h-full object-cover brightness-[0.85]"
           style={{ animation: 'zoom-pan 30s infinite alternate linear' }}
