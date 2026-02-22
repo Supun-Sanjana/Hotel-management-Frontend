@@ -14,7 +14,7 @@ const ClientNav = ({ onScrollTo }) => {
 
   return (
     <nav className="glass fixed w-full z-50 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center py-4">
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center pt-2">
         {/* Brand */}
         <h3 className="font-display font-bold text-primary text-2xl tracking-tight">
           Luxe<span className="text-secondary">Sphere</span>
@@ -58,13 +58,12 @@ const ClientNav = ({ onScrollTo }) => {
       </div>
 
       {/* Mobile Menu */}
-      <div 
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        } bg-white border-t border-gray-100 flex flex-col px-6 py-6 space-y-4 shadow-xl`}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          } bg-white border-t border-gray-100 flex flex-col px-6 py-2 space-y-2 shadow-xl`}
       >
         {["Rooms", "Facilities", "Gallery", "Contact"].map((item) => (
-          <button 
+          <button
             key={item}
             onClick={() => handleNavClick(item.toLowerCase() === "contact" ? "footer" : item.toLowerCase())}
             className="text-primary font-medium text-lg text-left hover:text-secondary transition-colors"
